@@ -27,7 +27,7 @@ class Manager < Employee
         sum = 0
         manager.employees.each do |employee|
             if employee.is_a?(Manager)
-               sum += sub_employee_bonus_sum(employee)
+            sum += sub_employee_bonus_sum(employee)
             else
                 sum += employee.salary 
             end
