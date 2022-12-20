@@ -13,11 +13,11 @@ class Employee
     def boss=(manager_instance)
         @boss = manager_instance
         manager_instance.employees << self
-        if self.is_a?(Manager)
-            self.employees.each do |employee|
-            manager_instance.employees << employee
-            end
-        end
+        # if self.is_a?(Manager)
+        #     self.employees.each do |employee|
+        #     manager_instance.employees << employee
+        #     end
+        # end
     end
 
     def bonus(multiplier)

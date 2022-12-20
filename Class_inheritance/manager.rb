@@ -18,9 +18,23 @@ class Manager < Employee
     
     def bonus(multiplier)
         sum = 0
-        employees.each {|employee| sum += employee.salary}
-        sum * multiplier
+        employees.each {|employee| sum += employee.salary if employee.is_a?(Manager)}
+        sum += sub_employee_bonus_sum(self)
+        return sum * multiplier
     end
+
+    def sub_employee_bonus_sum(manager)
+        sum = 0
+        manager.employees.each do |employee|
+            if employee.is_a?(Manager)
+               sum += sub_employee_bonus_sum(employee)
+            else
+                sum += employee.salary 
+            end
+        end
+        sum
+    end
+
     
 end
 
