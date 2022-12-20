@@ -4,8 +4,6 @@ class Piece
 
     end
 
-    def moves
 
-    ends
     
 end
