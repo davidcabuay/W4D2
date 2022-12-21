@@ -1,7 +1,7 @@
 module Slideable
 
-    HORIZONTAL_DIRS = [[0,1],[0,-1],[1,0],[-1,0]]
-    DIAGONAL_DIRS = [[1,1],[1,-1],[-1,1],[-1,-1]]
+    HORIZONTAL_DIRS = [[0,1],[0,-1],[1,0],[-1,0]].freeze
+    DIAGONAL_DIRS = [[1,1],[1,-1],[-1,1],[-1,-1]].freeze
 
     def horizontal_dirs
         HORIZONTAL_DIRS
@@ -11,10 +11,10 @@ module Slideable
         DIAGONAL_DIRS
     end
 
-    def moves(horordiag)
+    def moves(move_directions)
         result = []
-        horordiag.each do |pos|
-            result << grow_unblocked_moves_in_dir(pos)
+        move_directions.each do |increment|
+            result << grow_unblocked_moves_in_dir(increment)
         end
         result
     end
@@ -37,7 +37,7 @@ module Slideable
 
         result = []
         temp.each do |temp_pos|
-            result << temp_pos
+            result << temp_pos #nil placeholder for Nullclass singleton
             if board[temp_pos] != nil && self.color == board[temp_pos].color
                 return result[0...-1]
             elsif board[temp_pos] != nil && self.color != board[temp_pos].color
